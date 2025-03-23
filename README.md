@@ -13,8 +13,8 @@ This project analyzes the sentiment of tweets about Donald Trump using natural l
 
 1. Clone the repository:
 ```bash
-git clone <your-repository-url>
-cd trump-tweet-analysis
+git clone https://github.com/aarav-paul/Tweets-on-Trump.git
+cd Tweets-on-Trump
 ```
 
 2. Install required packages:
@@ -58,4 +58,8 @@ Make sure to:
 
 ## License
 
-[Your chosen license] 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+Aarav Paul 
