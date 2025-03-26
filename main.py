@@ -28,7 +28,7 @@ consumer_secret = os.getenv('TWITTER_CONSUMER_SECRET')
 access_token = os.getenv('TWITTER_ACCESS_TOKEN')
 access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
 
-def analyze_tweets(query="Trump", count=100):
+def analyze_tweets(query, count=100):
     try:
         # Check if credentials are available
         if not all([consumer_key, consumer_secret, access_token, access_token_secret]):
@@ -67,7 +67,7 @@ def analyze_tweets(query="Trump", count=100):
         # Plot sentiment distribution
         plt.figure(figsize=(10, 6))
         plt.hist(sentiments, bins=20)
-        plt.title(f"Sentiment Distribution for Tweets about {query}")
+        plt.title(f"Sentiment Distribution for Tweets about '{query}'")
         plt.xlabel("Sentiment Score")
         plt.ylabel("Frequency")
         
@@ -90,9 +90,18 @@ def analyze_tweets(query="Trump", count=100):
 
 if __name__ == "__main__":
     try:
-        results = analyze_tweets()
+        print("\nWelcome to Twitter Sentiment Analysis!")
+        print("Enter a topic to analyze tweets about (e.g., 'artificial intelligence', 'climate change', 'sports'):")
+        topic = input("> ").strip()
+        
+        if not topic:
+            print("Error: Please enter a topic to analyze")
+            exit(1)
+            
+        results = analyze_tweets(query=topic)
         if results:
             print("\nAnalysis Results:")
+            print(f"Topic: {topic}")
             print(f"Total tweets analyzed: {results['total_tweets']}")
             print(f"Average sentiment score: {results['average_sentiment']:.3f}")
             print("\nSample tweets and their sentiments:")
